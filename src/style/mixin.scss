@@ -1,0 +1,25 @@
+
+@mixin after($icon, $top, $left) {
+  content: url($icon);
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin width($maxWidth) {
+  max-width: $maxWidth;
+  width: 100%;
+}
+
+@mixin flex($justifyContent) {
+  display: flex;
+  justify-content: $justifyContent;
+}
+
+@mixin wrapper($position) {
+  position: $position;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

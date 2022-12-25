@@ -1,0 +1,535 @@
+@import './style/variables.scss';
+@import './style/mixin.scss';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-image: url($bgBodyImg);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  //background-size: 100% auto;
+  background-size: cover;
+  background-color: $bgBody;
+
+  &::after {
+    @include after($bgText, 0, 0);
+    z-index: -1;
+
+    @media screen and (max-width: 1600px) {
+      content: none;
+    }
+  }
+}
+
+.wrapper {
+  @include width(1200px);
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+.title {
+  font-size: 100px;
+  color: $text;
+  text-shadow: -4px 4px rgb(23, 58, 203), -3px 3px rgb(13, 42, 159), -2px 2px rgb(43, 76, 206), -1px 1px rgb(125, 147, 239), 0 0 rgba(128, 128, 128, .5), 1px -1px rgba(77, 77, 77, .6), 2px -2px rgba(77, 77, 77, .7), 3px -3px rgba(82, 82, 82, .8), 4px -4px rgba(77, 77, 77, .9), 5px -5px rgba(77, 77, 77, 1);
+  font-family: 'Ruslan Display', cursive;
+  margin-top: 35px;
+
+  @media screen and (max-width: 1050px) {
+    font-size: 85px;
+  }
+
+  @media screen and (max-width: 920px) {
+    font-size: 70px;
+  }
+  @media screen and (max-width: 730px) {
+    font-size: 58px;
+  }
+
+}
+
+.main {
+  @include flex(space-between);
+  flex: 1;
+}
+
+.plan {
+  width: 100%;
+
+  &_add {
+    display: flex;
+    align-items: center;
+    position: relative;
+    @media screen and (max-width: 470px) {
+      display: block;
+    }
+  }
+
+  &_title {
+    margin-right: 50px;
+    font-family: 'Ruslan Display', cursive;
+    font-size: 35px;
+    @media screen and (max-width: 540px) {
+      font-size: 30px;
+      margin-right: 20px;
+    }
+    @media screen and (max-width: 470px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  //.plan_img:before
+  &_img:before {
+    @include after($pigs, -40px, 237px);
+
+    @media screen and (max-width: 730px) {
+      content: none;
+    }
+  }
+}
+
+.card {
+  @include width(300px);
+  margin-top: 30px;
+  box-shadow: 2px 2px 14px 3px $boxShadow;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px 10px 10px;
+  background-color: $bgLight400;
+
+  &_box {
+    @include flex(space-around);
+    flex-wrap: wrap;
+  }
+
+  &_inputbox {
+    margin-top: 30px;
+  }
+}
+
+.input {
+  padding: 7px 5px;
+  outline: transparent;
+  border: transparent;
+  //background-color: transparent;
+  border-radius: 3px;
+  box-shadow: 2px 2px 14px 3px $boxShadow;
+  margin-right: 15px;
+  position: relative;
+  z-index: 1;
+  width: 200px;
+  background-color: $bgLight400;
+
+  @media screen and (max-width: 470px) {
+    width: 100%;
+  }
+
+  &_edit {
+    border: none;
+    padding: 5px;
+    outline: transparent;
+    background-color: $inputEdit;
+    border-radius: 3px;
+  }
+
+  &:disabled {
+    border: 1px solid $disabled;
+  }
+}
+
+.plans_box {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+  @media screen and (max-width: 470px) {
+    justify-content: flex-end;
+  }
+}
+
+.error {
+  color: $error;
+  font-size: 12px;
+  position: absolute;
+  bottom: -15px;
+  left: 5px;
+
+  &_input {
+    border: 1px solid $error;
+  }
+}
+
+.btn_add {
+  border: none;
+  font-family: 'Ruslan Display', cursive;
+  color: $text;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 0 14px 3px $boxShadow;
+  border-radius: 3px;
+  display: block;
+}
+
+.btn_close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: 'Ruslan Display', cursive;
+  color: $text;
+}
+
+.btn_close:disabled,
+.btn_add:disabled {
+  cursor: default;
+  color: $disabled;
+}
+
+.item {
+  margin-bottom: 18px;
+  margin-left: 30px;
+  position: relative;
+  display: flex;
+
+  &-box {
+    margin-bottom: 18px;
+    margin-left: 30px;
+  }
+}
+
+.item_input {
+  &:before {
+    @include after($pig, -9px, -30px);
+    //@include after($pig, -9px, -32px);
+  }
+
+  &:after {
+    //@include after($check, 4px, 3px);
+    @include after($check, 4px, 4px);
+    background-color: $bgLight200;
+  }
+}
+
+.item_active {
+  &:before {
+    @include after($pigActive, -9px, -30px);
+  }
+
+  &:after {
+    @include after('', 4px, 4px);
+    width: 17px;
+    height: 17px;
+    border: 2px solid $active;
+    border-radius: 3px;
+    background-color: $bgLight;
+  }
+}
+
+.item_btn {
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+
+  &:before {
+    content: url($delete);
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &:disabled:before {
+    content: url($deleteGrey);
+    cursor: default;
+  }
+}
+
+.item_editbox {
+  flex: 1;
+}
+
+.card_map {
+  flex: 1;
+  margin-top: 10px;
+}
+
+.btn_box {
+  margin: 15px auto;
+}
+
+.btn_todolist {
+  color: $bgLight;
+  background-color: $active;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 7px 0 $bgLight;
+  }
+}
+
+.btn_todolist + .btn_todolist {
+  margin-left: 5px;
+}
+
+.footer {
+  @include flex(center);
+  align-items: center;
+  font-size: 14px;
+  margin-top: 30px;
+  min-height: 50px;
+  text-align: center;
+}
+
+.progress {
+  position: relative;
+  top: 162px;
+}
+
+
+.nik_name,
+.logout {
+  padding: 3px 5px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.nik_name {
+  padding: 1px 7px;
+  background-color: $bgLight300;
+  position: relative;
+  border: 1px solid $dark;
+  border-radius: 5px;
+
+  &::after {
+    @include after($nikName, -67px, -120px);
+    z-index: -1;
+
+    @media screen and (max-width: 400px) {
+      @include after($nikNameSmall, -50px, -80px);
+    }
+    @media screen and (max-width: 340px) {
+      left: -50px;
+    }
+  }
+}
+
+.logout {
+  margin-left: 30px;
+  position: relative;
+
+  &::after {
+    @include after($logOut, -80px, -9px);
+    z-index: -1;
+  }
+}
+
+/* styles for login*/
+.login {
+  &_box {
+    @include flex(flex-end);
+
+    @media screen and (max-width: 1350px) {
+      margin-right: 77px;
+    }
+    @media screen and (max-width: 920px) {
+      margin-bottom: 55px;
+    }
+  }
+
+  &_title {
+    display: inline-block;
+    color: $text;
+    font-weight: 900;
+    margin-left: 10px;
+    position: relative;
+    top: 2px;
+    background-color: $bgLight;
+    box-shadow: 2px 2px 14px 3px $boxShadow;
+    border-radius: 5px;
+    z-index: -1;
+    padding: 2px 10px 10px;
+  }
+
+  &_formtitle {
+    font-family: 'Ruslan Display', cursive;
+    color: $dark800;
+    font-size: 24px;
+  }
+
+  &_input_block {
+    position: relative;
+  }
+
+  &_input {
+    display: block;
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 14px 3px $boxShadow;
+    border: none;
+    border-radius: 5px;
+    background-color: $bgLight;
+    outline: transparent;
+    color: $text;
+  }
+
+  &_wrapper {
+    @include wrapper(absolute);
+    background-color: $login;
+    z-index: 1;
+  }
+
+  &_block {
+    @include width(350px);
+    box-shadow: 2px 2px 14px 3px $boxShadow;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-color: $login;
+  }
+
+  //login_info
+  &_info {
+    text-align: center;
+    color: $dark800;
+
+    //login_info_data
+    &_data {
+      text-align: left;
+      display: flex;
+    }
+
+    //.login_info_span
+    &_span {
+      width: 100px;
+    }
+
+    //login_info_box
+    &_box {
+      margin-top: 10px;
+    }
+  }
+}
+
+.btn_block {
+  @include flex(center);
+  align-items: center;
+
+  & button {
+    width: 100%;
+  }
+}
+
+/*styles for checkbox in Login form*/
+.login_checkbox {
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.login_checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.login_checkbox_label {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  box-shadow: 2px 2px 14px 3px $boxShadow;
+  width: 30px;
+  height: 30px;
+}
+
+.login_checkbox input:checked + .login_checkbox_label::after {
+  @include after($checkbox, 0, 0);
+  cursor: pointer;
+}
+
+
+.login_error {
+  color: $error;
+  position: absolute;
+  bottom: -17px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.login_input_error {
+  border: 1px solid $error;
+}
+
+.loader {
+  @include wrapper(fixed);
+  @include flex(center);
+  background-color: $bgLight;
+  align-items: center;
+  z-index: 9;
+}
+
+/*styles for 404*/
+.not_found {
+  @include flex(center);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    @include after($beers, -20px, 30px);
+  }
+}
+
