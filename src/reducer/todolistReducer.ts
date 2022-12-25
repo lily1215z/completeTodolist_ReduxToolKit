@@ -6,6 +6,7 @@ import {handleServerAppError, handleServerNetworkError} from '../utils/error-uti
 import {TodoListFilterType} from '../components/TodolistMain';
 import {fetchTasksTC} from './tasksReducer';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {AppDispatch} from '../redux/store';
 
 const initState: Array<TodolistDomainType> = []
 
@@ -60,7 +61,7 @@ export const {
 } = slice.actions;
 
 export const getTodoTC = () => {
-    return async (dispatch: any) => {
+    return async (dispatch: AppDispatch) => {
         try {
             dispatch(setAppStatusAC({status: 'loading'}))
             const res = await todolistAPI.getTodolist()
@@ -102,7 +103,7 @@ export const removeTodoListTC = (todolistId: string) => async (dispatch: Dispatc
     try {
         dispatch(setAppStatusAC({status: 'loading'}))
         dispatch(disabledOneTodolistAC({todolistId, status: 'loading'}))
-        const res = await todolistAPI.removeTodolist(todolistId)
+        await todolistAPI.removeTodolist(todolistId)
         dispatch(removeTodoListAC({todolistId}))
         dispatch(setAppStatusAC({status: 'sucssesed'}))
     } catch (e) {
