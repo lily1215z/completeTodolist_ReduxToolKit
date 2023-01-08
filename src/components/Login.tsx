@@ -45,7 +45,7 @@ export const Login: React.FC<{}> = () => {
         },
         onSubmit: (values) => {
             // alert(JSON.stringify(values, null, 2));
-            dispatch(loginTC(values))
+            dispatch(loginTC(values)).then()
             formik.resetForm()
         },
     });

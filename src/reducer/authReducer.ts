@@ -19,6 +19,7 @@ const slice = createSlice({
         }
     }
 })
+
 export const authReducer = slice.reducer;
 // const setIsLoggedInAC = slice.actions.setIsLoggedInAC;
 export const {setIsLoggedInAC} = slice.actions;
