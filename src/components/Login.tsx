@@ -14,7 +14,7 @@ interface FormikErrorType {
     rememberMe?: boolean
 }
 
-export const Login: React.FC<{}> = () => {
+export const Login = () => {
     const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn);
 
     const dispatch = useAppDispatch();

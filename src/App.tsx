@@ -46,7 +46,7 @@ function App({demo = false}: PropsType) {
 
     return (
         <>
-            {status === 'loading' && <div className={style.progress}><LinearProgress color="primary"/></div>}
+            {status === 'loading' && <div><LinearProgress style={{position: 'absolute', width: '100%', height: '2px', top: '155px'}} color="primary"/></div>}
             <div className={style.wrapper}>
 
                 <Header/>

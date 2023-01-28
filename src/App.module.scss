@@ -145,7 +145,7 @@ body {
 .input {
   padding: 7px 5px;
   outline: transparent;
-  border: transparent;
+  border: 1px solid transparent;
   //background-color: transparent;
   border-radius: 3px;
   box-shadow: 2px 2px 14px 3px $boxShadow;
@@ -326,12 +326,6 @@ body {
   min-height: 50px;
   text-align: center;
 }
-
-.progress {
-  position: relative;
-  top: 162px;
-}
-
 
 .nik_name,
 .logout {
