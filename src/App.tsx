@@ -41,12 +41,14 @@ function App({demo = false}: PropsType) {
     }, [])
 
     if (!isInitialized) {
-        return <LoaderMain />
+        return <LoaderMain/>
     }
-
+    console.log('test in gitHub')
     return (
         <>
-            {status === 'loading' && <div><LinearProgress style={{position: 'absolute', width: '100%', height: '2px', top: '155px'}} color="primary"/></div>}
+            {status === 'loading' &&
+                <div><LinearProgress style={{position: 'absolute', width: '100%', height: '2px', top: '155px'}}
+                                     color="primary"/></div>}
             <div className={style.wrapper}>
 
                 <Header/>
@@ -55,7 +57,7 @@ function App({demo = false}: PropsType) {
                     <Route path={'/'} element={<TodolistMain demo={demo}/>}/>
                     <Route path={'/login'} element={<Login/>}/>
 
-                    <Route path="404" element={<NotFound />}/>
+                    <Route path="404" element={<NotFound/>}/>
                     <Route path="*" element={<Navigate to="404"/>}/>
                 </Routes>
 
