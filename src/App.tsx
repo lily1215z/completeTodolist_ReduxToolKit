@@ -43,7 +43,7 @@ function App({demo = false}: PropsType) {
     if (!isInitialized) {
         return <LoaderMain/>
     }
-    console.log('test in gitHub')
+
     return (
         <>
             {status === 'loading' &&

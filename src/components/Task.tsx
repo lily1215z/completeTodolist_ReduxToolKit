@@ -42,13 +42,16 @@ export const Task: React.FC<TaskType> = React.memo(({
         <>
             {
                 <li className={style.item}>
-                    <input
-                        disabled={disabled}
-                        checked={check === 2}
-                        type={'checkbox'}
-                        onChange={changeStatusTaskHandler}
-                        className={check === 2 ? `${style.item_input}` : `${style.item_active}`}
-                    />
+                    <div>
+                        <input
+                            disabled={disabled}
+                            checked={check === 2}
+                            type={'checkbox'}
+                            onChange={changeStatusTaskHandler}
+                            className={check === 2 ? `${style.item_input}` : `${style.item_active}`}
+                        />
+
+                    </div>
 
                     <div className={style.item_editbox}>
                         <EditableItem

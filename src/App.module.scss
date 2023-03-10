@@ -240,13 +240,12 @@ body {
 .item_input {
   &:before {
     @include after($pig, -9px, -30px);
-    //@include after($pig, -9px, -32px);
   }
 
   &:after {
-    //@include after($check, 4px, 3px);
     @include after($check, 4px, 4px);
-    background-color: $bgLight200;
+    background-color: $bgLight;
+    cursor: pointer;
   }
 }
 
@@ -262,6 +261,7 @@ body {
     border: 2px solid $active;
     border-radius: 3px;
     background-color: $bgLight;
+    cursor: pointer;
   }
 }
 
@@ -286,6 +286,9 @@ body {
 
 .item_editbox {
   flex: 1;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  padding-right: 15px;
 }
 
 .card_map {

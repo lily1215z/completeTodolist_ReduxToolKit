@@ -3,7 +3,6 @@ import {Task} from './Task';
 import {UniversalInput} from './UniversalInput';
 import style from '../App.module.scss'
 import {EditableItem} from './EditableItem';
-import {useAppDispatch} from '../hooks';
 import {TodolistDomainType} from '../reducer/todolistReducer';
 import {TaskStatuses, TaskType, TodoListFilterType} from './TodolistMain';
 
@@ -51,7 +50,9 @@ export const TodoList: React.FC<TodoListPropsType> = React.memo(({
     const styleForTodolistTitle = {
         fontFamily: '\'Ruslan Display\', cursive',
         margin: 0,
-        fontSize: '24px'
+        fontSize: '24px',
+        overflow: 'hidden',
+        overflowWrap: 'break-word',
     }
     //
     // useEffect(() => {
